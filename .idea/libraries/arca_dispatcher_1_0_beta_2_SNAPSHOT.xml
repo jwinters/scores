@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="arca-dispatcher-1.0-beta.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.pivotal/arca-dispatcher/1.0-beta.2-SNAPSHOT/3c12d59f26aba598958271bf0dd54847ec879742/arca-dispatcher-1.0-beta.2-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.pivotal/arca-dispatcher/1.0-beta.2-SNAPSHOT/f4d53b5ce72e581a20783b9df42327fede540e27/arca-dispatcher-1.0-beta.2-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

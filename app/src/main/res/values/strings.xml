@@ -1,0 +1,16 @@
+<resources>
+
+	<string name="app_name">Scores</string>
+
+	<string name="title_games">Games</string>
+	
+	<string name="add_account">Add Account</string>
+	
+	<string name="logo">logo</string>
+	
+	<string name="menu_reload">Reload</string>
+	
+	<string name="no_results_found">No Results Found</string>
+    <string name="scores">Scores</string>
+
+</resources>

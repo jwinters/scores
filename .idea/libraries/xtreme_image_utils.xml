@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xtreme-image-utils">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/xtreme-image-utils.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

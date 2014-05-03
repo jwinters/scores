@@ -1,0 +1,7 @@
+<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
+	android:accountType="com.scores.account"
+	android:allowParallelSyncs="false"
+	android:contentAuthority="com.scores.providers.ScoresContentProvider"
+	android:isAlwaysSyncable="true"
+	android:supportsUploading="true"
+	android:userVisible="true" />
