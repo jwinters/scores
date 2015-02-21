@@ -5,5 +5,6 @@
     android:orientation="vertical">
 
     <include layout="@layout/list_item_game" />
+    <include layout="@layout/list_item_game_odds" />
 
 </LinearLayout>

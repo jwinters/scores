@@ -14,6 +14,13 @@
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">#aaa</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="Text.BoxScore.Title">
+        <item name="android:background">#fff</item>
     </style>
 
 </resources>
