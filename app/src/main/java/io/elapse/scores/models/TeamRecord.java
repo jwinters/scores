@@ -13,6 +13,8 @@ public class TeamRecord {
         public static final String FACEOFFS_WON = "faceoffs_won";
         public static final String FACEOFFS_LOST = "faceoffs_lost";
         public static final String FACEOFF_WINNING_PERCENTAGE = "faceoff_winning_percentage";
+        public static final String POWER_PLAY_GOALS = "power_play_goals";
+        public static final String POWER_PLAY_OPPORTUNITIES = "power_play_opportunities";
         public static final String HITS = "hits";
     }
 
@@ -70,6 +72,20 @@ public class TeamRecord {
 
     public Float getFaceoffWinningPercentage() {
         return mFaceoffWinningPercentage;
+    }
+
+    @SerializedName(Fields.POWER_PLAY_GOALS)
+    private Long mPowerPlayGoals;
+
+    public Long getPowerPlayGoals() {
+        return mPowerPlayGoals;
+    }
+
+    @SerializedName(Fields.POWER_PLAY_OPPORTUNITIES)
+    private Long mPowerPlayOpportunities;
+
+    public Long getPowerPlayOpportunities() {
+        return mPowerPlayOpportunities;
     }
 
     @SerializedName(Fields.HITS)

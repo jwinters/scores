@@ -3,11 +3,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_list_item_dark"
+        android:background="@drawable/background_list_item"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:padding="5dp">
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -16,78 +15,36 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/box_score_away_wins"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_away_losses"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_away_overtime_losses"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_away_shots"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_away_fo_wins"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_away_fo_losses"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_away_fo_percentage"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_away_hits"
-                style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_wins" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_overtime_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_shots" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_fo_wins" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_fo_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_fo_percentage" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_pp_goals" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_pp_opportunities" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_hits" style="@style/Text.BoxScore" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:background="@drawable/background_list_item_dark"
             android:gravity="center_horizontal"
-            android:background="#fff">
+            android:orientation="vertical"
+            android:layout_weight="2">
 
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_wins" />
-
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_losses" />
-
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_overtime_losses" />
-
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_shots" />
-
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_faceoffs_won" />
-
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_faceoffs_lost" />
-
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_faceoff_winning_percentage" />
-
-            <TextView
-                style="@style/Text.BoxScore.Title"
-                android:text="@string/box_score_hits" />
+            <TextView android:text="@string/box_score_wins" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_losses" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_overtime_losses" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_shots" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_faceoffs_won" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_faceoffs_lost" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_faceoff_winning_percentage" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_power_play_goals" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_power_play_opportunities" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_hits" style="@style/Text.BoxScore.Title" />
         </LinearLayout>
 
         <LinearLayout
@@ -97,37 +54,16 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/box_score_home_wins"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_home_losses"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_home_overtime_losses"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_home_shots"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_home_fo_wins"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_home_fo_losses"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_home_fo_percentage"
-                style="@style/Text.BoxScore" />
-
-            <TextView
-                android:id="@+id/box_score_home_hits"
-                style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_wins" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_overtime_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_shots" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_fo_wins" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_fo_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_fo_percentage" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_pp_goals" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_pp_opportunities" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_hits" style="@style/Text.BoxScore" />
         </LinearLayout>
     </LinearLayout>
 </merge>

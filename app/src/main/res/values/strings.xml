@@ -6,18 +6,19 @@
     <string name="title_scores">Scores</string>
     <string name="menu_reload">Reload</string>
 
+    <string name="content_logo">logo</string>
     <string name="add_account">Add Account</string>
 	<string name="no_results_found">No Results Found</string>
 
-    <string name="box_score_scores">scores</string>
-    <string name="box_score_wins">wins</string>
-    <string name="box_score_losses">losses</string>
-    <string name="box_score_overtime_losses">overtime losses</string>
-    <string name="box_score_shots">shots</string>
-    <string name="box_score_faceoffs_won">f/o won</string>
-    <string name="box_score_faceoffs_lost">f/o lost</string>
-    <string name="box_score_faceoff_winning_percentage">f/o %</string>
-    <string name="box_score_hits">hits</string>
+    <string name="box_score_wins">Wins</string>
+    <string name="box_score_losses">Losses</string>
+    <string name="box_score_overtime_losses">OT Losses</string>
+    <string name="box_score_shots">Shots</string>
+    <string name="box_score_faceoffs_won">F/O Won</string>
+    <string name="box_score_faceoffs_lost">F/O Lost</string>
+    <string name="box_score_faceoff_winning_percentage">F/O %</string>
+    <string name="box_score_power_play_goals">PP Goals</string>
+    <string name="box_score_power_play_opportunities">PP Opp</string>
+    <string name="box_score_hits">Hits</string>
 
-    <string name="content_logo">logo</string>
 </resources>

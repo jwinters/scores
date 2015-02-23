@@ -44,6 +44,14 @@ public class TeamRecords {
         return mHome != null ? mHome.getFaceoffWinningPercentage() : null;
     }
 
+    public Long getHomePowerPlayGoals() {
+        return mHome != null ? mHome.getPowerPlayGoals() : null;
+    }
+
+    public Long getHomePowerPlayOpportunities() {
+        return mHome != null ? mHome.getPowerPlayOpportunities() : null;
+    }
+
     public Long getHomeHits() {
         return mHome != null ? mHome.getHits() : null;
     }
@@ -81,6 +89,14 @@ public class TeamRecords {
 
     public Float getAwayFaceoffWinningPercentage() {
         return mAway != null ? mAway.getFaceoffWinningPercentage() : null;
+    }
+
+    public Long getAwayPowerPlayGoals() {
+        return mAway != null ? mAway.getPowerPlayGoals() : null;
+    }
+
+    public Long getAwayPowerPlayOpportunities() {
+        return mAway != null ? mAway.getPowerPlayOpportunities() : null;
     }
 
     public Long getAwayHits() {

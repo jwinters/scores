@@ -98,6 +98,16 @@ public class BoxScore {
         return mTeamRecords != null ? mTeamRecords.getHomeFaceoffWinningPercentage() : null;
     }
 
+    @ColumnName(Columns.HOME_POWER_PLAY_GOALS)
+    public Long getHomePowerPlayGoals() {
+        return mTeamRecords != null ? mTeamRecords.getHomePowerPlayGoals() : null;
+    }
+
+    @ColumnName(Columns.HOME_POWER_PLAY_OPPORTUNITIES)
+    public Long getHomePowerPlayOpportunities() {
+        return mTeamRecords != null ? mTeamRecords.getHomePowerPlayOpportunities() : null;
+    }
+
     @ColumnName(Columns.HOME_HITS)
     public Long getHomeHits() {
         return mTeamRecords != null ? mTeamRecords.getHomeHits() : null;
@@ -141,6 +151,16 @@ public class BoxScore {
     @ColumnName(Columns.AWAY_FACEOFF_WINNING_PERCENTAGE)
     public Float getAwayFaceoffWinningPercentage() {
         return mTeamRecords != null ? mTeamRecords.getAwayFaceoffWinningPercentage() : null;
+    }
+
+    @ColumnName(Columns.AWAY_POWER_PLAY_GOALS)
+    public Long getAwayPowerPlayGoals() {
+        return mTeamRecords != null ? mTeamRecords.getAwayPowerPlayGoals() : null;
+    }
+
+    @ColumnName(Columns.AWAY_POWER_PLAY_OPPORTUNITIES)
+    public Long getAwayPowerPlayOpportunities() {
+        return mTeamRecords != null ? mTeamRecords.getAwayPowerPlayOpportunities() : null;
     }
 
     @ColumnName(Columns.AWAY_HITS)

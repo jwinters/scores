@@ -43,6 +43,12 @@ public class BoxScoreTable extends SQLiteTable {
         public static final String HOME_FACEOFF_WINNING_PERCENTAGE = "home_faceoff_winning_percentage";
 
         @Column(Column.Type.INTEGER)
+        public static final String HOME_POWER_PLAY_GOALS = "home_power_play_goals";
+
+        @Column(Column.Type.INTEGER)
+        public static final String HOME_POWER_PLAY_OPPORTUNITIES = "home_power_play_opportunities";
+
+        @Column(Column.Type.INTEGER)
         public static final String HOME_HITS = "home_hits";
         
         @Column(Column.Type.TEXT)
@@ -71,6 +77,12 @@ public class BoxScoreTable extends SQLiteTable {
 
         @Column(Column.Type.REAL)
         public static final String AWAY_FACEOFF_WINNING_PERCENTAGE = "away_faceoff_winning_percentage";
+
+        @Column(Column.Type.INTEGER)
+        public static final String AWAY_POWER_PLAY_GOALS = "away_power_play_goals";
+
+        @Column(Column.Type.INTEGER)
+        public static final String AWAY_POWER_PLAY_OPPORTUNITIES = "away_power_play_opportunities";
 
         @Column(Column.Type.INTEGER)
         public static final String AWAY_HITS = "away_hits";

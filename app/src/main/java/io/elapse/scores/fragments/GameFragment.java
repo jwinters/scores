@@ -71,7 +71,7 @@ public class GameFragment extends ArcaItemFragment {
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		if (item.getItemId() == R.id.menu_reload) {
 			reload();
-			return true;
+			return false;
 		} else {
 			return super.onOptionsItemSelected(item);
 		}
