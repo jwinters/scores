@@ -2,15 +2,11 @@ package io.elapse.scores.fragments;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CursorAdapter;
 
 import org.joda.time.LocalDate;
@@ -27,14 +23,17 @@ import io.elapse.scores.datasets.GameView;
 import io.elapse.scores.monitors.GameListMonitor;
 import io.elapse.scores.requests.ScoresQuery;
 import io.pivotal.arca.adapters.Binding;
-import io.pivotal.arca.dispatcher.Error;
-import io.pivotal.arca.dispatcher.QueryResult;
-import io.pivotal.arca.fragments.ArcaAdapterFragment;
-import io.pivotal.arca.fragments.ArcaViewManager;
-import io.pivotal.arca.monitor.ArcaDispatcher;
+import io.pivotal.arca.fragments.ArcaFragment;
+import io.pivotal.arca.fragments.ArcaFragmentBindings;
+import io.pivotal.arca.fragments.ArcaSimpleAdapterFragment;
 
-public class GameListFragment extends ArcaAdapterFragment implements OnItemClickListener {
+@ArcaFragment(
+    fragmentLayout = R.layout.fragment_game_list,
+    monitor = GameListMonitor.class
+)
+public class GameListFragment extends ArcaSimpleAdapterFragment {
 
+    @ArcaFragmentBindings
 	private static final Collection<Binding> BINDINGS = Arrays.asList(
         ViewType.PRE_GAME.newBinding(R.id.game_date, GameView.Columns.GAME_DATE),
         ViewType.PRE_GAME.newBinding(R.id.game_home_team_name, GameView.Columns.HOME_TEAM_NAME),
@@ -65,15 +64,6 @@ public class GameListFragment extends ArcaAdapterFragment implements OnItemClick
     );
 
 	private LocalDate mDate;
-    private ArcaViewManager mManager;
-
-	@Override
-	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		final View view = inflater.inflate(R.layout.fragment_game_list, container, false);
-		final AbsListView list = (AbsListView) view.findViewById(getAdapterViewId());
-		list.setOnItemClickListener(this);
-		return view;
-	}
 
     @Override
 	public CursorAdapter onCreateAdapter(final AdapterView<CursorAdapter> adapterView, final Bundle savedInstanceState) {
@@ -82,13 +72,6 @@ public class GameListFragment extends ArcaAdapterFragment implements OnItemClick
 		return adapter;
 	}
 
-	@Override
-	public ArcaDispatcher onCreateDispatcher(final Bundle savedInstanceState) {
-		final ArcaDispatcher dispatcher = super.onCreateDispatcher(savedInstanceState);
-		dispatcher.setRequestMonitor(new GameListMonitor());
-		return dispatcher;
-	}
-	
 	@Override
 	public void onItemClick(final AdapterView<?> adapterView, final View view, final int position, final long id) {
 		final Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
@@ -101,9 +84,6 @@ public class GameListFragment extends ArcaAdapterFragment implements OnItemClick
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mManager = new ArcaViewManager(view);
-        mManager.showProgressView();
 
         setHasOptionsMenu(true);
     }
@@ -123,11 +103,6 @@ public class GameListFragment extends ArcaAdapterFragment implements OnItemClick
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
-    private void reload() {
-		mManager.showProgressView();
-		loadGames();
-	}
     
     public void setDate(final LocalDate date) {
     	if (date != null && !date.equals(mDate)) {
@@ -136,17 +111,8 @@ public class GameListFragment extends ArcaAdapterFragment implements OnItemClick
     	}
 	}
 
-	private void loadGames() {
-		execute(new ScoresQuery(mDate));
-	}
-
-	@Override
-	public void onContentChanged(final QueryResult result) {
-		mManager.checkResult(result);
-	}
-
-	@Override
-	public void onContentError(final Error error) {
-		mManager.checkError(error);
-	}
+    private void reload() {
+        getViewManager().showProgressView();
+        execute(new ScoresQuery(mDate));
+    }
 }

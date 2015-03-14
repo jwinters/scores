@@ -15,7 +15,7 @@ public class ScoresContentProvider extends DatabaseProvider {
 	public static final String AUTHORITY = ScoresContentProvider.class.getName();
     private static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
 
-	public static final class Uris {
+    public static final class Uris {
         public static final Uri ARTICLES = Uri.withAppendedPath(BASE_URI, Paths.ARTICLES);
         public static final Uri SCORES = Uri.withAppendedPath(BASE_URI, Paths.SCORES);
 		public static final Uri GAMES = Uri.withAppendedPath(BASE_URI, Paths.GAMES);

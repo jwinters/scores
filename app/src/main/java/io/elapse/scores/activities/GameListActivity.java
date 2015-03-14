@@ -9,11 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
+import org.joda.time.LocalDate;
+
 import io.elapse.scores.R;
 import io.elapse.scores.adapters.CalendarAdapter;
 import io.elapse.scores.fragments.GameListFragment;
-
-import org.joda.time.LocalDate;
 
 public class GameListActivity extends Activity implements OnNavigationListener {
 
@@ -48,11 +48,13 @@ public class GameListActivity extends Activity implements OnNavigationListener {
 	
 	private void setupActionBar(final ArrayAdapter adapter) {
 		final ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		actionBar.setListNavigationCallbacks(adapter, this);
-		actionBar.setDisplayShowTitleEnabled(false);
-		actionBar.setDisplayShowHomeEnabled(false);
-		actionBar.setSelectedNavigationItem(2);
+        if (actionBar != null) {
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+            actionBar.setListNavigationCallbacks(adapter, this);
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(false);
+            actionBar.setSelectedNavigationItem(2);
+        }
 	}
 
 	@Override
