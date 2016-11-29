@@ -1,23 +1,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.elapse.scores"
-    android:versionCode="5"
+    package="io.lose.scores"
+    android:versionCode="8"
     android:versionName="1.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" android:maxSdkVersion="22"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" android:maxSdkVersion="22"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" android:maxSdkVersion="22"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
+        android:name=".application.ScoresApplication"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
         <activity
             android:name=".activities.LauncherActivity"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
+            android:theme="@style/AppTheme.Fullscreen"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +28,8 @@
         </activity>
 
         <activity
-            android:name=".activities.LoginActivity"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
+            android:name=".activities.AccountActivity"
+            android:theme="@style/AppTheme.Fullscreen"
             android:noHistory="true" />
 
         <activity android:name=".activities.ArticleListActivity"
@@ -74,13 +76,25 @@
                 android:resource="@xml/syncadapter" />
         </service>
 
+        <service android:name=".application.ScoresMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".application.ScoresInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
         <service
             android:name="io.pivotal.arca.service.OperationService"
             android:exported="false" />
 
         <provider
             android:name=".application.ScoresContentProvider"
-            android:authorities="io.elapse.scores.application.ScoresContentProvider"
+            android:authorities="io.lose.scores.application.ScoresContentProvider"
             android:exported="false" />
 
     </application>

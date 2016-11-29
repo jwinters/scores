@@ -1,21 +1,30 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 21
+        applicationId "io.lose.scores"
+        minSdkVersion 16
+        targetSdkVersion 24
     }
 }
 
 dependencies {
     compile 'joda-time:joda-time:2.3'
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.squareup.picasso:picasso:2.4.0'
-    compile('io.pivotal:arca:1.0-beta.4-SNAPSHOT') {
-        exclude group: 'com.android.support'
-    }
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.facebook.fresco:fresco:0.8.1'
+
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+
+    compile 'com.android.support:design:24.2.0'
+    compile 'com.google.firebase:firebase-messaging:9.0.1'
+
+    compile 'io.pivotal:arca-service:1.0-beta.10-SNAPSHOT'
+    compile 'io.pivotal:arca-provider:1.0-beta.10-SNAPSHOT'
+    compile 'io.pivotal:arca-fragments:1.0-beta.10-SNAPSHOT'
 }

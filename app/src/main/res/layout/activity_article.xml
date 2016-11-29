@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/fragment_article"
-        android:name="io.elapse.scores.fragments.ArticleFragment"
+        android:name="io.lose.scores.activities.ArticleActivity$ArticleFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

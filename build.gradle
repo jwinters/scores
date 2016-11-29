@@ -4,7 +4,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.1'
+        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
@@ -13,4 +14,8 @@ allprojects {
         jcenter()
         maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

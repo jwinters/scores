@@ -20,5 +20,8 @@
     <string name="box_score_power_play_goals">PP Goals</string>
     <string name="box_score_power_play_opportunities">PP Opp</string>
     <string name="box_score_hits">Hits</string>
+    <string name="empty_no_results">No Results</string>
+    <string name="account_name">Scores</string>
+    <string name="ok">OK</string>
 
 </resources>

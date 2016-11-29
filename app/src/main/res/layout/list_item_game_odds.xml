@@ -2,19 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:background="@drawable/background_list_item_dark"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="-1dp"
-        android:gravity="center"
-        android:layout_height="25dp">
+        android:background="@drawable/background_list_item_dark"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/game_odd_closing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
+            android:gravity="center"
             android:textColor="#aaa"
             android:textSize="9sp"
             tools:ignore="SmallSp" />

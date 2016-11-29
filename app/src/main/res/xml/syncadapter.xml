@@ -1,7 +1,7 @@
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accountType="io.elapse.scores.account"
+    android:accountType="io.lose.scores.account"
     android:allowParallelSyncs="false"
-    android:contentAuthority="io.elapse.scores.providers.ScoresContentProvider"
+    android:contentAuthority="io.lose.scores.providers.ScoresContentProvider"
     android:isAlwaysSyncable="true"
     android:supportsUploading="true"
     android:userVisible="true" />

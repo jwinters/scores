@@ -1,5 +1,4 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,7 +9,7 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/game_away_team_logo"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -78,7 +77,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/game_home_team_logo"
             android:layout_width="50dp"
             android:layout_height="50dp"

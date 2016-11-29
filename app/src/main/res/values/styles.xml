@@ -1,10 +1,17 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-	<style name="AppBaseTheme" parent="android:Theme.Light">
-	</style>
+    <style name="AppTheme.Fullscreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    </style>
 
-	<style name="AppTheme" parent="AppBaseTheme">
-	</style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarSize">70dp</item>
+        <item name="actionBarSize">70dp</item>
+        <item name="android:colorPrimary" tools:ignore="NewApi">#333</item>
+        <item name="colorPrimary">#333</item>
+        <item name="android:colorPrimaryDark" tools:ignore="NewApi">#000</item>
+        <item name="colorPrimaryDark">#000</item>
+    </style>
+
 
     <style name="Text" />
 
@@ -14,7 +21,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">1dp</item>
     </style>
 
     <style name="Text.BoxScore.Title">
