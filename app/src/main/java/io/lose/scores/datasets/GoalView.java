@@ -1,6 +1,7 @@
 package io.lose.scores.datasets;
 
 import io.pivotal.arca.provider.Joins;
+import io.pivotal.arca.provider.OrderBy;
 import io.pivotal.arca.provider.SQLiteView;
 import io.pivotal.arca.provider.Select;
 import io.pivotal.arca.provider.SelectFrom;
@@ -12,6 +13,8 @@ public class GoalView extends SQLiteView {
     @Joins({
         "LEFT JOIN TeamTable as team ON goals.team_id = team.id"
     })
+
+    @OrderBy(GoalTable.Columns.SEGMENT + "," + GoalTable.Columns.MINUTE + "," + GoalTable.Columns.SECOND)
 
     public interface Columns  {
         @Select("goals." + GoalTable.Columns._ID)
@@ -43,6 +46,9 @@ public class GoalView extends SQLiteView {
 
         @Select("goals." + GoalTable.Columns.PLAYER_NAME)
         public static final String PLAYER_NAME = "player_name";
+
+        @Select("goals." + GoalTable.Columns.PLAYER_HEADSHOT)
+        public static final String PLAYER_HEADSHOT = "player_headshot";
 
         @Select("goals." + GoalTable.Columns.A1_PLAYER_NAME)
         public static final String A1_PLAYER_NAME = "a1_player_name";

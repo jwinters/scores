@@ -2,14 +2,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background_list_item"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="horizontal"
+    android:layout_marginBottom="5dp"
+    android:padding="5dp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/goal_team_logo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/content_logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="2dp">
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp">
 
         <TextView
             android:id="@+id/goal_time"
@@ -18,20 +25,14 @@
             android:textColor="#aaa"
             android:textSize="10sp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="2dp">
-
         <TextView
             android:id="@+id/goal_player"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:textColor="#aaa"
             android:textSize="10sp" />
+
     </LinearLayout>
 
 </LinearLayout>

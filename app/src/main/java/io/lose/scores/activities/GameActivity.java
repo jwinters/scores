@@ -17,8 +17,8 @@ import io.lose.scores.datasets.BoxScoreTable;
 import io.lose.scores.datasets.GameView;
 import io.lose.scores.datasets.GoalView;
 import io.lose.scores.requests.BoxScoreQuery;
-import io.lose.scores.requests.GoalsQuery;
 import io.lose.scores.requests.ScoresQuery;
+import io.lose.scores.requests.ScoringQuery;
 import io.pivotal.arca.adapters.Binding;
 import io.pivotal.arca.fragments.ArcaFragment;
 import io.pivotal.arca.fragments.ArcaFragmentBindings;
@@ -130,7 +130,8 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
         @ArcaFragmentBindings
         private static final Collection<Binding> BINDINGS = Arrays.asList(
             new Binding(R.id.goal_time, GoalView.Columns.SEGMENT_STRING),
-            new Binding(R.id.goal_player, GoalView.Columns.PLAYER_NAME)
+            new Binding(R.id.goal_player, GoalView.Columns.PLAYER_NAME),
+            new Binding(R.id.goal_team_logo, GoalView.Columns.TEAM_LOGO)
         );
 
         private String mItemId;
@@ -144,7 +145,7 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         @Override
         public void onRefresh() {
-            execute(new GoalsQuery(mItemId));
+            execute(new ScoringQuery(mItemId));
         }
     }
 

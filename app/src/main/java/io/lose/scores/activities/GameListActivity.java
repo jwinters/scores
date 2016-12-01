@@ -4,12 +4,12 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -91,14 +91,6 @@ public class GameListActivity extends AppCompatActivity {
 
         @Override
         public RecyclerViewCursorAdapter onCreateAdapter(final RecyclerView adapterView, final Bundle savedInstanceState) {
-
-            adapterView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void getItemOffsets(final Rect outRect, final View view, final RecyclerView parent, final RecyclerView.State state) {
-                    outRect.bottom = 30;
-                }
-            });
-
             final GamesAdapter cursorAdapter = new GamesAdapter(getActivity(), BINDINGS);
             final RecyclerViewCursorAdapter adapter = new RecyclerViewCursorAdapter(cursorAdapter);
             adapter.setViewBinder(new GameListViewBinder());
@@ -134,7 +126,12 @@ public class GameListActivity extends AppCompatActivity {
 
         @Override
         public void onRefresh() {
-            execute(new ScoresQuery(LocalDateTime.now(DateTimeZone.UTC)));
+            final DateTimeZone utc = DateTimeZone.UTC;
+            final LocalDate now = LocalDate.now();
+
+            execute(new ScoresQuery(now));
+
+            Toast.makeText(getActivity(), "" + now, Toast.LENGTH_SHORT).show();
         }
 
         public void setDate(final LocalDate date) {

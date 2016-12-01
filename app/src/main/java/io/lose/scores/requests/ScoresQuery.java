@@ -1,6 +1,9 @@
 package io.lose.scores.requests;
 
-import org.joda.time.LocalDateTime;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
 import io.lose.scores.application.ScoresContentProvider;
@@ -9,16 +12,17 @@ import io.pivotal.arca.dispatcher.Query;
 
 public class ScoresQuery extends Query {
 
-    public ScoresQuery() {
-        super(ScoresContentProvider.Uris.SCORES, 4500);
-    }
+    private static final DateTimeFormatter FORMATTER = ISODateTimeFormat.dateTimeNoMillis();
 
-    public ScoresQuery(final LocalDateTime date) {
+    public ScoresQuery(final LocalDate date) {
         super(ScoresContentProvider.Uris.SCORES, 4000);
 
+        final DateTime start = date.toDateTimeAtStartOfDay();
+        final DateTime utc = start.toDateTime(DateTimeZone.UTC);
+
         setWhere(GameView.Columns.GAME_DATE + " BETWEEN ? AND ?",
-            ISODateTimeFormat.date().print(date),
-            ISODateTimeFormat.date().print(date.plusDays(1))
+            FORMATTER.print(utc),
+            FORMATTER.print(utc.plusDays(1))
         );
     }
 

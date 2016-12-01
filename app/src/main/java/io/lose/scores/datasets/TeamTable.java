@@ -25,6 +25,6 @@ public class TeamTable extends SQLiteTable {
         @Column(Column.Type.TEXT) String LOGO_SQUARE = "logo_square";
 	}
 
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 }

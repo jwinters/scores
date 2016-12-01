@@ -6,6 +6,6 @@ import io.pivotal.arca.dispatcher.Query;
 public class StandingsQuery extends Query {
 
     public StandingsQuery() {
-        super(ScoresContentProvider.Uris.STANDINGS, 6000);
+        super(ScoresContentProvider.Uris.STANDINGS, 7000);
     }
 }
