@@ -14,15 +14,11 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <TextView android:id="@+id/box_score_away_wins" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_away_losses" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_away_overtime_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_record" style="@style/Text.BoxScore" />
             <TextView android:id="@+id/box_score_away_shots" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_away_fo_wins" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_away_fo_losses" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_away_fo_percentage" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_away_pp_goals" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_away_pp_opportunities" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_faceoffs" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_faceoff_percentage" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_away_power_plays" style="@style/Text.BoxScore" />
             <TextView android:id="@+id/box_score_away_hits" style="@style/Text.BoxScore" />
         </LinearLayout>
 
@@ -34,15 +30,11 @@
             android:orientation="vertical"
             android:layout_weight="2">
 
-            <TextView android:text="@string/box_score_wins" style="@style/Text.BoxScore.Title" />
-            <TextView android:text="@string/box_score_losses" style="@style/Text.BoxScore.Title" />
-            <TextView android:text="@string/box_score_overtime_losses" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_record" style="@style/Text.BoxScore.Title" />
             <TextView android:text="@string/box_score_shots" style="@style/Text.BoxScore.Title" />
-            <TextView android:text="@string/box_score_faceoffs_won" style="@style/Text.BoxScore.Title" />
-            <TextView android:text="@string/box_score_faceoffs_lost" style="@style/Text.BoxScore.Title" />
-            <TextView android:text="@string/box_score_faceoff_winning_percentage" style="@style/Text.BoxScore.Title" />
-            <TextView android:text="@string/box_score_power_play_goals" style="@style/Text.BoxScore.Title" />
-            <TextView android:text="@string/box_score_power_play_opportunities" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_faceoffs" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_faceoff_percentage" style="@style/Text.BoxScore.Title" />
+            <TextView android:text="@string/box_score_power_plays" style="@style/Text.BoxScore.Title" />
             <TextView android:text="@string/box_score_hits" style="@style/Text.BoxScore.Title" />
         </LinearLayout>
 
@@ -53,15 +45,11 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <TextView android:id="@+id/box_score_home_wins" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_home_losses" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_home_overtime_losses" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_record" style="@style/Text.BoxScore" />
             <TextView android:id="@+id/box_score_home_shots" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_home_fo_wins" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_home_fo_losses" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_home_fo_percentage" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_home_pp_goals" style="@style/Text.BoxScore" />
-            <TextView android:id="@+id/box_score_home_pp_opportunities" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_faceoffs" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_faceoff_percentage" style="@style/Text.BoxScore" />
+            <TextView android:id="@+id/box_score_home_power_plays" style="@style/Text.BoxScore" />
             <TextView android:id="@+id/box_score_home_hits" style="@style/Text.BoxScore" />
         </LinearLayout>
     </LinearLayout>

@@ -8,20 +8,19 @@
 
     <string name="content_logo">logo</string>
     <string name="add_account">Add Account</string>
+    <string name="account_name">Scores</string>
+
 	<string name="no_results_found">No Results Found</string>
 
-    <string name="box_score_wins">Wins</string>
-    <string name="box_score_losses">Losses</string>
-    <string name="box_score_overtime_losses">OT Losses</string>
+    <string name="box_score_record">Record</string>
     <string name="box_score_shots">Shots</string>
-    <string name="box_score_faceoffs_won">F/O Won</string>
-    <string name="box_score_faceoffs_lost">F/O Lost</string>
-    <string name="box_score_faceoff_winning_percentage">F/O %</string>
-    <string name="box_score_power_play_goals">PP Goals</string>
-    <string name="box_score_power_play_opportunities">PP Opp</string>
+    <string name="box_score_faceoffs">Faceoffs</string>
+    <string name="box_score_faceoff_percentage">Faceoff %</string>
+    <string name="box_score_power_plays">Powerplay</string>
     <string name="box_score_hits">Hits</string>
+
     <string name="empty_no_results">No Results</string>
-    <string name="account_name">Scores</string>
+
     <string name="ok">OK</string>
 
 </resources>

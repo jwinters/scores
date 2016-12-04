@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import io.lose.scores.R;
+import io.lose.scores.binders.BoxScoreViewBinder;
 import io.lose.scores.binders.GameListViewBinder;
 import io.lose.scores.binders.GoalListViewBinder;
 import io.lose.scores.datasets.BoxScoreTable;
@@ -121,32 +122,25 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     @ArcaFragment(
-        fragmentLayout = R.layout.fragment_box_score
+        fragmentLayout = R.layout.fragment_box_score,
+        binder = BoxScoreViewBinder.class
     )
     public static class BoxScoreFragment extends ArcaSimpleItemFragment implements SwipeRefreshLayout.OnRefreshListener {
 
         @ArcaFragmentBindings
         private static final Collection<Binding> BINDINGS = Arrays.asList(
-            new Binding(R.id.box_score_away_wins, BoxScoreTable.Columns.AWAY_WINS),
-            new Binding(R.id.box_score_away_losses, BoxScoreTable.Columns.AWAY_LOSSES),
-            new Binding(R.id.box_score_away_overtime_losses, BoxScoreTable.Columns.AWAY_OVERTIME_LOSSES),
+            new Binding(R.id.box_score_away_record, BoxScoreTable.Columns.AWAY_WINS),
             new Binding(R.id.box_score_away_shots, BoxScoreTable.Columns.AWAY_SHOTS),
-            new Binding(R.id.box_score_away_fo_wins, BoxScoreTable.Columns.AWAY_FACEOFFS_WON),
-            new Binding(R.id.box_score_away_fo_losses, BoxScoreTable.Columns.AWAY_FACEOFFS_LOST),
-            new Binding(R.id.box_score_away_fo_percentage, BoxScoreTable.Columns.AWAY_FACEOFF_WINNING_PERCENTAGE),
-            new Binding(R.id.box_score_away_pp_goals, BoxScoreTable.Columns.AWAY_POWER_PLAY_GOALS),
-            new Binding(R.id.box_score_away_pp_opportunities, BoxScoreTable.Columns.AWAY_POWER_PLAY_OPPORTUNITIES),
+            new Binding(R.id.box_score_away_faceoffs, BoxScoreTable.Columns.AWAY_FACEOFFS_WON),
+            new Binding(R.id.box_score_away_faceoff_percentage, BoxScoreTable.Columns.AWAY_FACEOFF_WINNING_PERCENTAGE),
+            new Binding(R.id.box_score_away_power_plays, BoxScoreTable.Columns.AWAY_POWER_PLAY_GOALS),
             new Binding(R.id.box_score_away_hits, BoxScoreTable.Columns.AWAY_HITS),
 
-            new Binding(R.id.box_score_home_wins, BoxScoreTable.Columns.HOME_WINS),
-            new Binding(R.id.box_score_home_losses, BoxScoreTable.Columns.HOME_LOSSES),
-            new Binding(R.id.box_score_home_overtime_losses, BoxScoreTable.Columns.HOME_OVERTIME_LOSSES),
+            new Binding(R.id.box_score_home_record, BoxScoreTable.Columns.HOME_WINS),
             new Binding(R.id.box_score_home_shots, BoxScoreTable.Columns.HOME_SHOTS),
-            new Binding(R.id.box_score_home_fo_wins, BoxScoreTable.Columns.HOME_FACEOFFS_WON),
-            new Binding(R.id.box_score_home_fo_losses, BoxScoreTable.Columns.HOME_FACEOFFS_LOST),
-            new Binding(R.id.box_score_home_fo_percentage, BoxScoreTable.Columns.HOME_FACEOFF_WINNING_PERCENTAGE),
-            new Binding(R.id.box_score_home_pp_goals, BoxScoreTable.Columns.HOME_POWER_PLAY_GOALS),
-            new Binding(R.id.box_score_home_pp_opportunities, BoxScoreTable.Columns.HOME_POWER_PLAY_OPPORTUNITIES),
+            new Binding(R.id.box_score_home_faceoffs, BoxScoreTable.Columns.HOME_FACEOFFS_WON),
+            new Binding(R.id.box_score_home_faceoff_percentage, BoxScoreTable.Columns.HOME_FACEOFF_WINNING_PERCENTAGE),
+            new Binding(R.id.box_score_home_power_plays, BoxScoreTable.Columns.HOME_POWER_PLAY_GOALS),
             new Binding(R.id.box_score_home_hits, BoxScoreTable.Columns.HOME_HITS)
         );
 
