@@ -46,10 +46,10 @@ public class GameView extends SQLiteView {
         @Select("away." + TeamTable.Columns.ABBREVIATION)
         public static final String AWAY_TEAM_NAME = "away_team_name";
 
-        @Select("home." + TeamTable.Columns.LOGO_SQUARE)
+        @Select("home." + TeamTable.Columns.LOGO_LARGE)
         public static final String HOME_TEAM_LOGO = "home_team_logo";
 
-        @Select("away." + TeamTable.Columns.LOGO_SQUARE)
+        @Select("away." + TeamTable.Columns.LOGO_LARGE)
         public static final String AWAY_TEAM_LOGO = "away_team_logo";
 
         @Select("scores." + BoxScoreTable.Columns.PROGRESS)

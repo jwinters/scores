@@ -11,8 +11,8 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/game_away_team_logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:contentDescription="@string/content_logo" />
 
         <LinearLayout
@@ -79,8 +79,8 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/game_home_team_logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:contentDescription="@string/content_logo" />
 
     </LinearLayout>

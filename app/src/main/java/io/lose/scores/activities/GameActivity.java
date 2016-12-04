@@ -121,35 +121,6 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     @ArcaFragment(
-        fragmentLayout = R.layout.fragment_recycler,
-        adapterItemLayout = R.layout.list_item_goal,
-        binder = GoalListViewBinder.class
-    )
-    public static class GoalListFragment extends ArcaSimpleRecyclerViewFragment implements SwipeRefreshLayout.OnRefreshListener {
-
-        @ArcaFragmentBindings
-        private static final Collection<Binding> BINDINGS = Arrays.asList(
-            new Binding(R.id.goal_time, GoalView.Columns.SEGMENT_STRING),
-            new Binding(R.id.goal_player, GoalView.Columns.PLAYER_NAME),
-            new Binding(R.id.goal_team_logo, GoalView.Columns.TEAM_LOGO)
-        );
-
-        private String mItemId;
-
-        public void setItemId(final String itemId) {
-            if (itemId != null) {
-                mItemId = itemId;
-                onRefresh();
-            }
-        }
-
-        @Override
-        public void onRefresh() {
-            execute(new ScoringQuery(mItemId));
-        }
-    }
-
-    @ArcaFragment(
         fragmentLayout = R.layout.fragment_box_score
     )
     public static class BoxScoreFragment extends ArcaSimpleItemFragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -191,6 +162,35 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
         @Override
         public void onRefresh() {
             execute(new BoxScoreQuery(mItemId));
+        }
+    }
+
+    @ArcaFragment(
+            fragmentLayout = R.layout.fragment_recycler,
+            adapterItemLayout = R.layout.list_item_goal,
+            binder = GoalListViewBinder.class
+    )
+    public static class GoalListFragment extends ArcaSimpleRecyclerViewFragment implements SwipeRefreshLayout.OnRefreshListener {
+
+        @ArcaFragmentBindings
+        private static final Collection<Binding> BINDINGS = Arrays.asList(
+                new Binding(R.id.goal_time, GoalView.Columns.SEGMENT_STRING),
+                new Binding(R.id.goal_player, GoalView.Columns.PLAYER_NAME),
+                new Binding(R.id.goal_team_logo, GoalView.Columns.TEAM_LOGO)
+        );
+
+        private String mItemId;
+
+        public void setItemId(final String itemId) {
+            if (itemId != null) {
+                mItemId = itemId;
+                onRefresh();
+            }
+        }
+
+        @Override
+        public void onRefresh() {
+            execute(new ScoringQuery(mItemId));
         }
     }
 }

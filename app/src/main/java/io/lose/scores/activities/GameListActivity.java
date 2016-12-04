@@ -9,11 +9,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
-import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -126,12 +123,7 @@ public class GameListActivity extends AppCompatActivity {
 
         @Override
         public void onRefresh() {
-            final DateTimeZone utc = DateTimeZone.UTC;
-            final LocalDate now = LocalDate.now();
-
-            execute(new ScoresQuery(now));
-
-            Toast.makeText(getActivity(), "" + now, Toast.LENGTH_SHORT).show();
+            execute(new ScoresQuery(LocalDate.now()));
         }
 
         public void setDate(final LocalDate date) {
