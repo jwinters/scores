@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -46,6 +47,8 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         mRefreshLayout.setOnRefreshListener(this);

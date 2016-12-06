@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import org.joda.time.LocalDate;
 
@@ -40,9 +42,15 @@ public class GameListActivity extends AppCompatActivity {
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_list);
-		
+
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
         findGameListFragment().setDate(LocalDate.now());
 	}
+
+    public void onActionButtonClick(final View view) {
+        Toast.makeText(this, "DATE_RANGE", Toast.LENGTH_SHORT).show();
+    }
 
 	private GameListFragment findGameListFragment() {
 		final FragmentManager manager = getFragmentManager();
