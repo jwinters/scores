@@ -1,18 +1,21 @@
 package io.lose.scores.activities;
 
+import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.DatePicker;
 
 import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,13 +34,13 @@ import io.pivotal.arca.fragments.ArcaFragment;
 import io.pivotal.arca.fragments.ArcaFragmentBindings;
 import io.pivotal.arca.fragments.ArcaSimpleRecyclerViewFragment;
 
-public class GameListActivity extends AppCompatActivity {
+public class GameListActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
 	public static void newInstance(final Context context) {
 		final Intent intent = new Intent(context, GameListActivity.class);
 		context.startActivity(intent);
 	}
-	
+
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,19 +48,40 @@ public class GameListActivity extends AppCompatActivity {
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        findGameListFragment().setDate(LocalDate.now());
+        setDate(LocalDate.now());
 	}
 
-    public void onActionButtonClick(final View view) {
-        Toast.makeText(this, "DATE_RANGE", Toast.LENGTH_SHORT).show();
+    private void setDate(final LocalDate date) {
+        final String formatted = DateTimeFormat.forPattern("EEE, MMM d").print(date);
+        findCollapsingToolbar().setTitle(formatted);
+        findGameListFragment().setDate(date);
     }
 
-	private GameListFragment findGameListFragment() {
-		final FragmentManager manager = getFragmentManager();
-		return (GameListFragment) manager.findFragmentById(R.id.fragment_game_list);
-	}
+    private CollapsingToolbarLayout findCollapsingToolbar() {
+        return (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+    }
 
-	@ArcaFragment(
+    private GameListFragment findGameListFragment() {
+        final FragmentManager manager = getFragmentManager();
+        return (GameListFragment) manager.findFragmentById(R.id.fragment_game_list);
+    }
+
+    public void onActionButtonClick(final View view) {
+        final LocalDate now = LocalDate.now();
+        final int year = now.getYear();
+        final int month = now.getMonthOfYear() - 1;
+        final int day = now.getDayOfMonth();
+
+        new DatePickerDialog(this, this, year, month, day).show();
+    }
+
+    @Override
+    public void onDateSet(final DatePicker datePicker, int year, int month, int day) {
+
+        setDate(new LocalDate(year, month + 1, day));
+    }
+
+    @ArcaFragment(
         fragmentLayout = R.layout.fragment_swipe_recycler,
         monitor = GameListMonitor.class
     )
@@ -131,7 +155,9 @@ public class GameListActivity extends AppCompatActivity {
 
         @Override
         public void onRefresh() {
-            execute(new ScoresQuery(LocalDate.now()));
+            if (mDate != null) {
+                execute(new ScoresQuery(mDate));
+            }
         }
 
         public void setDate(final LocalDate date) {
