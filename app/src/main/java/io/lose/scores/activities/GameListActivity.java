@@ -69,10 +69,10 @@ public class GameListActivity extends AppCompatActivity implements DatePickerDia
     public void onActionButtonClick(final View view) {
         final LocalDate now = LocalDate.now();
         final int year = now.getYear();
-        final int month = now.getMonthOfYear() - 1;
+        final int month = now.getMonthOfYear();
         final int day = now.getDayOfMonth();
 
-        new DatePickerDialog(this, this, year, month, day).show();
+        new DatePickerDialog(this, this, year, month - 1, day).show();
     }
 
     @Override

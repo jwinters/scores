@@ -7,15 +7,8 @@ import android.content.ContentProviderClient;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SyncResult;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.ISODateTimeFormat;
-
-import io.lose.scores.operations.GetGameListOperation;
-import io.pivotal.arca.service.OperationService;
 
 public class ScoresSyncAdapterService extends Service {
 
@@ -35,10 +28,9 @@ public class ScoresSyncAdapterService extends Service {
 		@Override
 		public void onPerformSync(final Account account, final Bundle extras, final String authority, final ContentProviderClient provider, final SyncResult syncResult) {
 
-			final Uri uri = ScoresContentProvider.Uris.SCORES;
-			final String date = ISODateTimeFormat.date().print(LocalDateTime.now());
+//			final String date = ISODateTimeFormat.date().print(LocalDateTime.now());
 
-			OperationService.start(getContext(), new GetGameListOperation(uri, date));
+//			OperationService.start(getContext(), new GetEventsOperation(date));
 		}
 	}
 

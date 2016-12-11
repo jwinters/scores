@@ -18,6 +18,9 @@ import io.lose.scores.binders.GoalListViewBinder;
 import io.lose.scores.datasets.BoxScoreTable;
 import io.lose.scores.datasets.GameView;
 import io.lose.scores.datasets.GoalView;
+import io.lose.scores.monitors.BoxScoreMonitor;
+import io.lose.scores.monitors.GameMonitor;
+import io.lose.scores.monitors.GoalListMonitor;
 import io.lose.scores.requests.BoxScoreQuery;
 import io.lose.scores.requests.ScoresQuery;
 import io.lose.scores.requests.ScoringQuery;
@@ -93,7 +96,8 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @ArcaFragment(
         fragmentLayout = R.layout.fragment_game,
-        binder = GameListViewBinder.class
+        binder = GameListViewBinder.class,
+        monitor = GameMonitor.class
     )
     public static class GameFragment extends ArcaSimpleItemFragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -126,7 +130,8 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @ArcaFragment(
         fragmentLayout = R.layout.fragment_box_score,
-        binder = BoxScoreViewBinder.class
+        binder = BoxScoreViewBinder.class,
+        monitor = BoxScoreMonitor.class
     )
     public static class BoxScoreFragment extends ArcaSimpleItemFragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -165,7 +170,8 @@ public class GameActivity extends AppCompatActivity implements SwipeRefreshLayou
     @ArcaFragment(
             fragmentLayout = R.layout.fragment_recycler,
             adapterItemLayout = R.layout.list_item_goal,
-            binder = GoalListViewBinder.class
+            binder = GoalListViewBinder.class,
+            monitor = GoalListMonitor.class
     )
     public static class GoalListFragment extends ArcaSimpleRecyclerViewFragment implements SwipeRefreshLayout.OnRefreshListener {
 

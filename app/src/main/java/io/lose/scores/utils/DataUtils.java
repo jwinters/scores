@@ -12,7 +12,17 @@ import io.pivotal.arca.provider.SQLiteTable;
 
 public class DataUtils {
 
-    public static ContentValues get(final Class<? extends SQLiteTable> klass, final Map<String, String> data) {
+    public static <T> ContentValues[] get(final Class<? extends SQLiteTable> klass, final List<Map<String, T>> data) throws Exception {
+        final List<ContentValues> result = new ArrayList<>();
+        for (final Map<String, T> object : data) {
+            final ContentValues values = new ContentValues();
+            getColumns(klass, object, values);
+            result.add(values);
+        }
+        return result.toArray(new ContentValues[result.size()]);
+    }
+
+    public static <T> ContentValues get(final Class<? extends SQLiteTable> klass, final Map<String, T> data) {
         final ContentValues values = new ContentValues();
         try {
             getColumns(klass, data, values);
@@ -22,58 +32,35 @@ public class DataUtils {
         return values;
     }
 
-    private static void getColumns(final Class<?> klass, final Map<String, String> data, final ContentValues values) throws Exception {
+    private static <T> void getColumns(final Class<?> klass, final Map<String, T> data, final ContentValues values) throws Exception {
         final Field[] fields = klass.getFields();
         for (final Field field : fields) {
             getField(field, data, values);
         }
 
         final Class<?>[] klasses = klass.getDeclaredClasses();
-        for (int i = 0; i < klasses.length; i++) {
-            getColumns(klasses[i], data, values);
+        for (final Class<?> k : klasses) {
+            getColumns(k, data, values);
         }
     }
 
-    private static void getField(final Field field, final Map<String, String> data, final ContentValues values) throws Exception {
+    private static <T> void getField(final Field field, final Map<String, T> data, final ContentValues values) throws Exception {
         final Column columnType = field.getAnnotation(Column.class);
         if (columnType != null) {
             final String columnName = (String) field.get(null);
-            final String value = data.get(columnName);
-            if (value != null) {
-                values.put(columnName, value);
+            final T value = data.get(columnName);
+            if (value instanceof String) {
+                values.put(columnName, (String) value);
+
+            } else if (value instanceof Integer) {
+                values.put(columnName, (Integer) value);
+
+            } else if (value instanceof Float) {
+                values.put(columnName, (Float) value);
+
+            } else if (value instanceof byte[]) {
+                values.put(columnName, (byte[]) value);
             }
-        }
-    }
-
-    public static <T> ContentValues[] get(final Class<? extends SQLiteTable> klass, final List<T> data) {
-        final List<ContentValues> result = new ArrayList<ContentValues>();
-        for (final T object : data) {
-            final ContentValues values = new ContentValues();
-            getColumns(klass, object, values);
-            result.add(values);
-        }
-        return result.toArray(new ContentValues[result.size()]);
-    }
-
-    private static <T> void getColumns(final Class<?> klass, final T data, final ContentValues values) {
-        final Field[] fields = klass.getFields();
-        for (final Field field : fields) {
-            getField(field, data, values);
-        }
-
-        final Class<?>[] klasses = klass.getDeclaredClasses();
-        for (int i = 0; i < klasses.length; i++) {
-            getColumns(klasses[i], data, values);
-        }
-    }
-
-    private static <T> void getField(final Field field, final T data, final ContentValues values) {
-        try {
-            final String columnName = (String) field.get(null);
-            final Field declared = data.getClass().getDeclaredField(columnName);
-            values.put(columnName, (String) declared.get(data));
-        } catch (final Exception e) {
-            // do nothing
         }
     }
 }
