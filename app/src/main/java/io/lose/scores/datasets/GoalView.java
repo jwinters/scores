@@ -44,6 +44,9 @@ public class GoalView extends SQLiteView {
         @Select("goals." + GoalTable.Columns.SEGMENT_STRING)
         public static final String SEGMENT_STRING = "segment_string";
 
+        @Select("goals." + GoalTable.Columns.GOAL_STRENGTH)
+        public static final String GOAL_STRENGTH = "goal_strength";
+
         @Select("goals." + GoalTable.Columns.PLAYER_NAME)
         public static final String PLAYER_NAME = "player_name";
 

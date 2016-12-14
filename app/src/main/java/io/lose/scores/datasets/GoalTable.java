@@ -25,6 +25,7 @@ public class GoalTable extends SQLiteTable {
         @Column(Column.Type.INTEGER) String PERIOD = "period";
         @Column(Column.Type.INTEGER) String TEAM_ID = "team_id";
         @Column(Column.Type.TEXT) String SEGMENT_STRING = "segment_string";
+        @Column(Column.Type.TEXT) String GOAL_STRENGTH = "goal_strength";
         @Column(Column.Type.TEXT) String PLAYER_NAME = "player_name";
         @Column(Column.Type.TEXT) String PLAYER_HEADSHOT = "player_headshot";
         @Column(Column.Type.TEXT) String A1_PLAYER_NAME = "a1_player_name";

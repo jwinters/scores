@@ -8,12 +8,22 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.lose.scores.R;
 import io.lose.scores.datasets.GoalTable;
 import io.pivotal.arca.adapters.Binding;
 import io.pivotal.arca.adapters.ViewBinder;
 
 public class GoalListViewBinder implements ViewBinder {
+
+    private static final Map<String, String> STRENGTH_MAP = new HashMap<>();
+
+    static {
+        STRENGTH_MAP.put("short-handed", "SHG");
+        STRENGTH_MAP.put("power play", "PPG");
+    }
 
     @Override
     public boolean setViewValue(final View view, final Cursor cursor, final Binding binding) {
@@ -55,9 +65,14 @@ public class GoalListViewBinder implements ViewBinder {
 	}
 
     private boolean setGoalPlayerValue(final TextView view, final Cursor cursor, final Binding binding) {
+        final String strength = cursor.getString(cursor.getColumnIndex(GoalTable.Columns.GOAL_STRENGTH));
+        final String modifier = STRENGTH_MAP.get(strength);
+
+        view.setText(modifier != null ? modifier + " " : "");
+
         final String player = cursor.getString(binding.getColumnIndex());
         if (!TextUtils.isEmpty(player)) {
-            view.setText("(G) " + player);
+            view.setText(view.getText() + "(G) " + player);
         }
         final String a1 = cursor.getString(cursor.getColumnIndex(GoalTable.Columns.A1_PLAYER_NAME));
         if (!TextUtils.isEmpty(a1)) {
