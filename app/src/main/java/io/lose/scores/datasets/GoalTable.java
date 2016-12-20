@@ -8,20 +8,12 @@ import io.pivotal.arca.provider.Unique.OnConflict;
 public class GoalTable extends SQLiteTable {
 
     public interface Columns extends SQLiteTable.Columns {
-
         @Unique(OnConflict.REPLACE)
-        @Column(Column.Type.INTEGER) String BOX_SCORE_ID = "box_score_id";
-
-        @Unique(OnConflict.REPLACE)
-        @Column(Column.Type.INTEGER) String SEGMENT = "segment";
-
-        @Unique(OnConflict.REPLACE)
-        @Column(Column.Type.INTEGER) String MINUTE = "minute";
-
-        @Unique(OnConflict.REPLACE)
-        @Column(Column.Type.INTEGER) String SECOND = "second";
-
         @Column(Column.Type.INTEGER) String ID = "id";
+        @Column(Column.Type.INTEGER) String BOX_SCORE_ID = "box_score_id";
+        @Column(Column.Type.INTEGER) String SEGMENT = "segment";
+        @Column(Column.Type.INTEGER) String MINUTE = "minute";
+        @Column(Column.Type.INTEGER) String SECOND = "second";
         @Column(Column.Type.INTEGER) String PERIOD = "period";
         @Column(Column.Type.INTEGER) String TEAM_ID = "team_id";
         @Column(Column.Type.TEXT) String SEGMENT_STRING = "segment_string";

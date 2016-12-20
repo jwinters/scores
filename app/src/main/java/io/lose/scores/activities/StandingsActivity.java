@@ -32,7 +32,7 @@ public class StandingsActivity extends AppCompatActivity {
 	}
 
 	@ArcaFragment(
-			fragmentLayout = R.layout.fragment_swipe_recycler,
+			fragmentLayout = R.layout.fragment_recycler_refresh,
 			adapterItemLayout = R.layout.list_item_standing
 	)
 	public static class StandingsFragment extends ArcaSimpleRecyclerViewFragment implements SwipeRefreshLayout.OnRefreshListener {

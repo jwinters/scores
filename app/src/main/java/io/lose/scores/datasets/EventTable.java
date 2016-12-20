@@ -1,5 +1,7 @@
 package io.lose.scores.datasets;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import io.pivotal.arca.provider.Column;
 import io.pivotal.arca.provider.SQLiteTable;
 import io.pivotal.arca.provider.Unique;
@@ -24,4 +26,7 @@ public class EventTable extends SQLiteTable {
         @Column(Column.Type.INTEGER) String ODD_CLOSING = "odd_closing";
         @Column(Column.Type.INTEGER) String BOX_SCORE_ID = "box_score_id";
     }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 }

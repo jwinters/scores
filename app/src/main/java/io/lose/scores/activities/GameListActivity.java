@@ -82,7 +82,7 @@ public class GameListActivity extends AppCompatActivity implements DatePickerDia
     }
 
     @ArcaFragment(
-        fragmentLayout = R.layout.fragment_swipe_recycler,
+        fragmentLayout = R.layout.fragment_recycler_refresh,
         monitor = GameListMonitor.class
     )
     public static class GameListFragment extends ArcaSimpleRecyclerViewFragment implements SwipeRefreshLayout.OnRefreshListener {

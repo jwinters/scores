@@ -1,5 +1,7 @@
 package io.lose.scores.datasets;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import io.pivotal.arca.provider.Column;
 import io.pivotal.arca.provider.SQLiteTable;
 import io.pivotal.arca.provider.Unique;
@@ -34,4 +36,7 @@ public class BoxScoreTable extends SQLiteTable {
         @Column(Column.Type.INTEGER) String AWAY_POWER_PLAY_OPPORTUNITIES = "away_power_play_opportunities";
         @Column(Column.Type.INTEGER) String AWAY_HITS = "away_hits";
     }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 }

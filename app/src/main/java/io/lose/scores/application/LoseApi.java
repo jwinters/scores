@@ -39,6 +39,10 @@ public class LoseApi {
         Call<Registration> deleteRegistration(@Query("reg_id") String regId);
 
         @Headers({"Authorization: " + SERVER_TOKEN})
+        @HTTP(method = "GET", path = "/v1/scores/articles")
+        Call<List<Map<String, String>>> fetchArticles();
+
+        @Headers({"Authorization: " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/scores/teams")
         Call<List<Map<String, String>>> fetchTeams();
 
@@ -91,6 +95,9 @@ public class LoseApi {
         return BASE_SERVICE.deleteRegistration(regId).execute().body();
     }
 
+    public static List<Map<String, String>> getArticles() throws Exception {
+        return BASE_SERVICE.fetchArticles().execute().body();
+    }
 
     public static List<Map<String, String>> getTeams() throws Exception {
         return BASE_SERVICE.fetchTeams().execute().body();

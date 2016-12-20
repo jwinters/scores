@@ -9,6 +9,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
 
+import io.lose.scores.datasets.ArticleTable;
 import io.lose.scores.datasets.BoxScoreTable;
 import io.lose.scores.datasets.EventTable;
 import io.lose.scores.datasets.GoalTable;
@@ -25,7 +26,10 @@ public class ScoresMessagingService extends FirebaseMessagingService {
 
         final Map<String, String> data = message.getData();
 
-        if (data.containsKey(TeamTable.Columns.ABBREVIATION)) {
+        if (data.containsKey(ArticleTable.Columns.TITLE)) {
+            handleArticleMessage(data);
+
+        } else if (data.containsKey(TeamTable.Columns.ABBREVIATION)) {
             handleTeamMessage(data);
 
         }  else if (data.containsKey(StandingTable.Columns.SHORT_RECORD)) {
@@ -40,6 +44,13 @@ public class ScoresMessagingService extends FirebaseMessagingService {
         } else if (data.containsKey(GoalTable.Columns.PLAYER_NAME)) {
             handleGoalMessage(data);
         }
+
+    }
+
+    private void handleArticleMessage(final Map<String, String> data) {
+        final ContentValues values = DataUtils.get(ArticleTable.class, data);
+        insertValues(values, ScoresContentProvider.Uris.ARTICLES);
+        Logger.v("Article: " + values);
     }
 
     private void handleTeamMessage(final Map<String, String> data) {

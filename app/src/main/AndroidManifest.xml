@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.lose.scores"
-    android:versionCode="13"
+    android:versionCode="14"
     android:versionName="1.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -32,16 +32,11 @@
             android:theme="@style/AppTheme.Fullscreen"
             android:noHistory="true" />
 
-        <activity android:name=".activities.ArticleListActivity"
+        <activity android:name=".activities.FeedActivity"
             android:launchMode="singleTop" />
 
-        <activity
-            android:name=".activities.ArticleActivity"
-            android:parentActivityName=".activities.ArticleListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.ArticleListActivity" />
-        </activity>
+        <activity android:name=".activities.ArticleListActivity"
+            android:launchMode="singleTop" />
 
         <activity android:name=".activities.GameListActivity"
             android:launchMode="singleTop" />

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Collection;
-import java.util.Locale;
 
 import io.lose.scores.R;
 import io.lose.scores.datasets.GameView;
@@ -24,15 +23,15 @@ public class GamesAdapter extends ModernCursorAdapter {
     public int getItemViewType(final int position) {
         final Cursor cursor = (Cursor) getItem(position);
         final int index = cursor.getColumnIndex(GameView.Columns.EVENT_STATUS);
-        final String typeString = cursor.getString(index).toUpperCase(Locale.getDefault());
-        return ViewType.valueOf(typeString).ordinal();
+        final String typeString = cursor.getString(index).toUpperCase();
+        return ViewType.parse(typeString).ordinal();
     }
 
     @Override
     public View newView(final Context context, final Cursor cursor, final ViewGroup parent) {
         final int index = cursor.getColumnIndex(GameView.Columns.EVENT_STATUS);
-        final String typeString = cursor.getString(index).toUpperCase(Locale.getDefault());
-        final int layout = ViewType.valueOf(typeString).getLayout();
+        final String typeString = cursor.getString(index).toUpperCase();
+        final int layout = ViewType.parse(typeString).getLayout();
         return LayoutInflater.from(context).inflate(layout, parent, false);
     }
 
@@ -53,6 +52,14 @@ public class GamesAdapter extends ModernCursorAdapter {
 
         public Binding newBinding(final int viewId, final String column) {
             return new Binding(ordinal(), viewId, column);
+        }
+
+        private static ViewType parse(final String name) {
+            try {
+                return ViewType.valueOf(name);
+            } catch (final Exception e) {
+                return ViewType.FINAL;
+            }
         }
     }
 }

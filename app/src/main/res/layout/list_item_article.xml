@@ -1,33 +1,30 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:baselineAligned="false">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/article_image"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_list_item"
-        android:baselineAligned="false"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:contentDescription="@string/content_logo"
+        app:viewAspectRatio="1.33" />
 
-        <TextView
-            android:id="@+id/article_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#aa000000"
+        android:fontFamily="serif"
+        android:maxLines="4"
+        android:padding="10dp"
+        android:shadowColor="#000"
+        android:shadowRadius="10"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/article_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="@string/content_logo"
-            android:layout_margin="10dp" />
-
-        <TextView
-            android:id="@+id/article_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-</merge>
+</FrameLayout>

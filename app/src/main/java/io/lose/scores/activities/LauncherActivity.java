@@ -33,7 +33,7 @@ public class LauncherActivity extends AppCompatActivity {
 	}
 
 	public void launch() {
-		GameListActivity.newInstance(this);
+		FeedActivity.newInstance(this);
 	}
 
 	private static final class LaunchHandler extends Handler {
