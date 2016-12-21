@@ -39,7 +39,7 @@ public class ArticleListActivity extends AppCompatActivity {
 	}
 
 	@ArcaFragment(
-			fragmentLayout = R.layout.fragment_recycler_horizontal,
+			fragmentLayout = R.layout.fragment_recycler_refresh,
 			adapterItemLayout = R.layout.list_item_article,
             monitor = ArticleListMonitor.class,
             binder = ArticleListViewBinder.class
@@ -67,7 +67,7 @@ public class ArticleListActivity extends AppCompatActivity {
 
         @Override
         public RecyclerView.LayoutManager onCreateLayoutManager(final RecyclerView recyclerView, final Bundle savedInstanceState) {
-            return new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+            return new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         }
 
         @Override

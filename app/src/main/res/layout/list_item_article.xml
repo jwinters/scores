@@ -2,20 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:baselineAligned="false">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/article_image"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/content_logo"
         app:viewAspectRatio="1.33" />
 
     <TextView
         android:id="@+id/article_title"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="#aa000000"
@@ -25,6 +24,6 @@
         android:shadowColor="#000"
         android:shadowRadius="10"
         android:textColor="#fff"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
 </FrameLayout>

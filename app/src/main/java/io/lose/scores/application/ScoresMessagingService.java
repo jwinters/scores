@@ -50,7 +50,7 @@ public class ScoresMessagingService extends FirebaseMessagingService {
     private void handleArticleMessage(final Map<String, String> data) {
         final ContentValues values = DataUtils.get(ArticleTable.class, data);
         insertValues(values, ScoresContentProvider.Uris.ARTICLES);
-        Logger.v("Article: " + values);
+        Logger.v("ARTICLE: " + values);
     }
 
     private void handleTeamMessage(final Map<String, String> data) {
