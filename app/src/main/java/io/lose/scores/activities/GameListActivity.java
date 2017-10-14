@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,12 +27,10 @@ import io.lose.scores.monitors.GameListMonitor;
 import io.lose.scores.requests.ScoresQuery;
 import io.pivotal.arca.adapters.Binding;
 import io.pivotal.arca.adapters.RecyclerViewCursorAdapter;
-import io.pivotal.arca.dispatcher.QueryResult;
 import io.pivotal.arca.fragments.ArcaFragment;
 import io.pivotal.arca.fragments.ArcaFragmentBindings;
-import io.pivotal.arca.fragments.ArcaSimpleRecyclerViewFragment;
 
-public class GameListActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class GameListActivity extends ScoresActivity implements DatePickerDialog.OnDateSetListener {
 
 	public static void newInstance(final Context context) {
 		final Intent intent = new Intent(context, GameListActivity.class);
@@ -85,7 +81,7 @@ public class GameListActivity extends AppCompatActivity implements DatePickerDia
         fragmentLayout = R.layout.fragment_recycler_refresh,
         monitor = GameListMonitor.class
     )
-    public static class GameListFragment extends ArcaSimpleRecyclerViewFragment implements SwipeRefreshLayout.OnRefreshListener {
+    public static class GameListFragment extends RefreshRecyclerViewFragment {
 
         @ArcaFragmentBindings
         private static final Collection<Binding> BINDINGS = Arrays.asList(
@@ -116,7 +112,6 @@ public class GameListActivity extends AppCompatActivity implements DatePickerDia
         );
 
         private LocalDate mDate;
-        private SwipeRefreshLayout mRefreshLayout;
 
         @Override
         public RecyclerViewCursorAdapter onCreateAdapter(final RecyclerView adapterView, final Bundle savedInstanceState) {
@@ -133,24 +128,6 @@ public class GameListActivity extends AppCompatActivity implements DatePickerDia
             final String boxScoreId = cursor.getString(cursor.getColumnIndex(GameView.Columns.BOX_SCORE_ID));
 
             GameActivity.newInstance(getActivity(), gameId, boxScoreId);
-        }
-
-        @Override
-        public void onViewCreated(final View view, final Bundle savedInstanceState) {
-            super.onViewCreated(view, savedInstanceState);
-
-            mRefreshLayout = (SwipeRefreshLayout) view;
-            mRefreshLayout.setOnRefreshListener(this);
-            mRefreshLayout.setRefreshing(false);
-
-            onRefresh();
-        }
-
-        @Override
-        public void onContentChanged(final QueryResult result) {
-            super.onContentChanged(result);
-
-            mRefreshLayout.setRefreshing(false);
         }
 
         @Override

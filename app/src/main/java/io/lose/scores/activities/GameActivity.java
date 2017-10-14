@@ -5,7 +5,6 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import java.util.Arrays;
@@ -30,7 +29,7 @@ import io.pivotal.arca.fragments.ArcaFragmentBindings;
 import io.pivotal.arca.fragments.ArcaSimpleItemFragment;
 import io.pivotal.arca.fragments.ArcaSimpleRecyclerViewFragment;
 
-public class GameActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class GameActivity extends ScoresActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private interface Extras {
         String GAME_ID = "game_id";

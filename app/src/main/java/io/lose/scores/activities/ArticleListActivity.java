@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,12 +18,10 @@ import io.lose.scores.monitors.ArticleListMonitor;
 import io.lose.scores.requests.ArticlesQuery;
 import io.lose.scores.utils.Logger;
 import io.pivotal.arca.adapters.Binding;
-import io.pivotal.arca.dispatcher.QueryResult;
 import io.pivotal.arca.fragments.ArcaFragment;
 import io.pivotal.arca.fragments.ArcaFragmentBindings;
-import io.pivotal.arca.fragments.ArcaSimpleRecyclerViewFragment;
 
-public class ArticleListActivity extends AppCompatActivity {
+public class ArticleListActivity extends ScoresActivity {
 
 	public static void newInstance(final Context context) {
 		final Intent intent = new Intent(context, ArticleListActivity.class);
@@ -44,7 +40,7 @@ public class ArticleListActivity extends AppCompatActivity {
             monitor = ArticleListMonitor.class,
             binder = ArticleListViewBinder.class
 	)
-	public static class ArticleListFragment extends ArcaSimpleRecyclerViewFragment implements SwipeRefreshLayout.OnRefreshListener {
+	public static class ArticleListFragment extends RefreshRecyclerViewFragment {
 
 		@ArcaFragmentBindings
 		private static final Collection<Binding> BINDINGS = Arrays.asList(
@@ -52,29 +48,9 @@ public class ArticleListActivity extends AppCompatActivity {
 				new Binding(R.id.article_image, ArticleTable.Columns.MEDIUM_IMAGE)
 		);
 
-		private SwipeRefreshLayout mRefreshLayout;
-
-		@Override
-		public void onViewCreated(final View view, final Bundle savedInstanceState) {
-			super.onViewCreated(view, savedInstanceState);
-
-			mRefreshLayout = (SwipeRefreshLayout) view;
-			mRefreshLayout.setOnRefreshListener(this);
-			mRefreshLayout.setRefreshing(false);
-
-			onRefresh();
-		}
-
         @Override
         public RecyclerView.LayoutManager onCreateLayoutManager(final RecyclerView recyclerView, final Bundle savedInstanceState) {
             return new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        }
-
-        @Override
-        public void onContentChanged(final QueryResult result) {
-            super.onContentChanged(result);
-
-            mRefreshLayout.setRefreshing(false);
         }
 
 		@Override

@@ -1,8 +1,6 @@
 package io.lose.scores.application;
 
 import com.google.gson.annotations.SerializedName;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -12,17 +10,19 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
-import retrofit.Call;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.http.Body;
-import retrofit.http.HTTP;
-import retrofit.http.Headers;
-import retrofit.http.Query;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.HTTP;
+import retrofit2.http.Headers;
+import retrofit2.http.Query;
 
 public class LoseApi {
 
-    interface Service {
+    private interface Service {
         String SERVER_URL = "http://api.lose.io";
         String SERVER_TOKEN = "bearer V2VkIDI4IFNlcCAyMDE2IDIwOjEzOjIxIEVEVAo=";
 
@@ -63,19 +63,19 @@ public class LoseApi {
         Call<List<Map<String, String>>> fetchGoals(@Query("id") String id);
     }
 
-    private static final OkHttpClient CLIENT = new OkHttpClient();
-
-    static {
-        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
-
-        CLIENT.interceptors().add(logging);
-    }
 
     private static final Service BASE_SERVICE = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(Service.SERVER_URL).client(CLIENT)
+            .baseUrl(Service.SERVER_URL)
+            .client(createLoggingClient())
             .build().create(Service.class);
+
+
+    private static OkHttpClient createLoggingClient() {
+        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        return new OkHttpClient.Builder().addInterceptor(logging).build();
+    }
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormat
             .forPattern("yyyy-MM-dd'T'HH:mm")
@@ -83,8 +83,7 @@ public class LoseApi {
 
 
     public static Registration postRegistration(final String regId) throws Exception {
-        final Registration registration = new Registration(regId);
-        return BASE_SERVICE.postRegistration(registration).execute().body();
+        return BASE_SERVICE.postRegistration(new Registration(regId)).execute().body();
     }
 
     public static List<Registration> getRegistration(final String regId) throws Exception {
@@ -121,7 +120,7 @@ public class LoseApi {
         return BASE_SERVICE.fetchGoals(id).execute().body();
     }
 
-    private static class Registration {
+    public static class Registration {
 
         private interface Fields {
             String REG_ID = "reg_id";
