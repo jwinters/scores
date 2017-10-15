@@ -7,7 +7,7 @@ import android.os.Parcel;
 import java.util.List;
 import java.util.Map;
 
-import io.lose.scores.application.LoseApi;
+import io.lose.scores.application.ScoresApi;
 import io.lose.scores.application.ScoresContentProvider;
 import io.lose.scores.datasets.GoalTable;
 import io.lose.scores.utils.DataUtils;
@@ -43,7 +43,7 @@ public class GetGoalsOperation extends SimpleOperation {
 
 	@Override
 	public ContentValues[] onExecute(final Context context) throws Exception {
-		final List<Map<String, String>> list = LoseApi.getGoals(mBoxScoreId);
+		final List<Map<String, String>> list = ScoresApi.getGoals(mBoxScoreId);
         return DataUtils.get(GoalTable.class, list);
 	}
 

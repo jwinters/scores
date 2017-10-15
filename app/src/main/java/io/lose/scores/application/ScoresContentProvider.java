@@ -9,6 +9,7 @@ import io.lose.scores.datasets.GameView;
 import io.lose.scores.datasets.GoalTable;
 import io.lose.scores.datasets.GoalView;
 import io.lose.scores.datasets.StandingTable;
+import io.lose.scores.datasets.StandingView;
 import io.lose.scores.datasets.TeamTable;
 import io.pivotal.arca.provider.DatabaseProvider;
 
@@ -26,6 +27,7 @@ public class ScoresContentProvider extends DatabaseProvider {
         Uri STANDINGS = Uri.withAppendedPath(BASE_URI, Paths.STANDINGS);
         Uri SCORES = Uri.withAppendedPath(BASE_URI, Paths.SCORES);
         Uri SCORING = Uri.withAppendedPath(BASE_URI, Paths.SCORING);
+        Uri RANKING = Uri.withAppendedPath(BASE_URI, Paths.RANKING);
     }
 
 	private interface Paths {
@@ -37,6 +39,7 @@ public class ScoresContentProvider extends DatabaseProvider {
         String GOALS = "goals";
         String STANDINGS = "standings";
         String SCORING = "scoring";
+        String RANKING = "ranking";
 	}
 
 	@Override
@@ -49,6 +52,7 @@ public class ScoresContentProvider extends DatabaseProvider {
         registerDataset(AUTHORITY, Paths.STANDINGS, StandingTable.class);
         registerDataset(AUTHORITY, Paths.SCORES, GameView.class);
         registerDataset(AUTHORITY, Paths.SCORING, GoalView.class);
+        registerDataset(AUTHORITY, Paths.RANKING, StandingView.class);
         return true;
 	}
 

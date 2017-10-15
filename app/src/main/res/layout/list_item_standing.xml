@@ -6,9 +6,52 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/standing_team_logo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/content_logo" />
+
     <TextView
-        android:id="@+id/standing_id"
+        android:id="@+id/standing_team_abbreviation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:id="@+id/standing_conference_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:id="@+id/standing_division_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:id="@+id/standing_games_played"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:id="@+id/standing_last_ten_games_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:id="@+id/standing_short_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:id="@+id/standing_streak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
 
 </LinearLayout>

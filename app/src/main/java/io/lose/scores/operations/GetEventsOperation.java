@@ -11,7 +11,7 @@ import org.joda.time.format.ISODateTimeFormat;
 import java.util.List;
 import java.util.Map;
 
-import io.lose.scores.application.LoseApi;
+import io.lose.scores.application.ScoresApi;
 import io.lose.scores.application.ScoresContentProvider;
 import io.lose.scores.datasets.EventTable;
 import io.lose.scores.utils.DataUtils;
@@ -48,7 +48,7 @@ public class GetEventsOperation extends SimpleOperation {
 	@Override
 	public ContentValues[] onExecute(final Context context) throws Exception {
 		final DateTime time = ISODateTimeFormat.dateTimeParser().parseDateTime(mDate);
-		final List<Map<String, String>> list = LoseApi.getEvents(time);
+		final List<Map<String, String>> list = ScoresApi.getEvents(time);
         return DataUtils.get(EventTable.class, list);
 	}
 

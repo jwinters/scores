@@ -20,45 +20,45 @@ import retrofit2.http.HTTP;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
-public class LoseApi {
+public class ScoresApi {
 
     private interface Service {
         String SERVER_URL = "http://api.lose.io";
-        String SERVER_TOKEN = "bearer V2VkIDI4IFNlcCAyMDE2IDIwOjEzOjIxIEVEVAo=";
+        String SERVER_TOKEN = ScoresProperties.SERVER_TOKEN;
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "POST", path = "/v1/registrations", hasBody = true)
         Call<Registration> postRegistration(@Body Registration reg);
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/registrations")
         Call<List<Registration>> getRegistrations(@Query("reg_id") String regId);
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "DELETE", path = "/v1/registrations")
         Call<Registration> deleteRegistration(@Query("reg_id") String regId);
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/scores/articles")
         Call<List<Map<String, String>>> fetchArticles();
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/scores/teams")
         Call<List<Map<String, String>>> fetchTeams();
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/scores/standings")
         Call<List<Map<String, String>>> fetchStandings();
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/scores/events")
         Call<List<Map<String, String>>> fetchEvents(@Query("start_date") String start, @Query("end_date") String end);
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/scores/box_score")
         Call<Map<String, String>> fetchBoxScore(@Query("id") String id);
 
-        @Headers({"Authorization: " + SERVER_TOKEN})
+        @Headers({"Authorization: bearer " + SERVER_TOKEN})
         @HTTP(method = "GET", path = "/v1/scores/goals")
         Call<List<Map<String, String>>> fetchGoals(@Query("id") String id);
     }
