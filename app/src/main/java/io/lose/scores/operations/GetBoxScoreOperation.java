@@ -10,8 +10,6 @@ import io.lose.scores.application.ScoresApi;
 import io.lose.scores.application.ScoresContentProvider;
 import io.lose.scores.datasets.BoxScoreTable;
 import io.lose.scores.utils.DataUtils;
-import io.pivotal.arca.dispatcher.ErrorBroadcaster;
-import io.pivotal.arca.service.ServiceError;
 import io.pivotal.arca.service.SimpleOperation;
 import io.pivotal.arca.threading.Identifier;
 
@@ -55,10 +53,10 @@ public class GetBoxScoreOperation extends SimpleOperation {
 
 	@Override
 	public void onComplete(final Context context, final Results results) {
-		if (results.hasFailedTasks()) {
-			final ServiceError error = results.getFailedTasks().get(0).getError();
-			ErrorBroadcaster.broadcast(context, getUri(), error.getCode(), error.getMessage());
-		}
+//		if (results.hasFailedTasks()) {
+//			final ServiceError error = results.getFailedTasks().get(0).getError();
+//			ErrorBroadcaster.broadcast(context, getUri(), error.getCode(), error.getMessage());
+//		}
 	}
 
 	public static final Creator CREATOR = new Creator() {
